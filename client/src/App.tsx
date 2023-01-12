@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+// import "antd/dist/antd.css";
+// import { Projects } from "./screens/projects";
+// import { Projectview } from "./screens/projectview";
+import SignIn from "./components/signin/SignIn";
+// import { ProtectedRoute } from "./helper/protectedRoute";
+import SignUp from "./components/Login/Login";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          {/* <ProtectedRoute path="/" exact component={Projects}/> */}
+      {/* <ProtectedRoute path="/projectview" component={Projectview}/> */}
+           <Route path="/login" element={<SignIn/>} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </Router>
+    </Provider>
   );
 }
 

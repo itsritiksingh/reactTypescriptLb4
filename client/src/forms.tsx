@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import { useSelector, useDispatch } from 'react-redux'
 import type { RootState, AppDispatch } from './store/index';
-import {updateFormData,fetchSolution} from "./store/todoSlices"
+import {updateFormData,fetchSolution} from "./store/solutionSlice"
 
 const Form:React.FC = () => {
   const solutionState = useSelector((state: RootState) => state.todosReducer)
@@ -11,7 +11,6 @@ const Form:React.FC = () => {
   const update = (event: React.ChangeEvent<HTMLInputElement>) =>{
   dispatch(updateFormData({...solutionState,
     [event.target.name]: event.target.value}))
-    dispatch(fetchSolution(solutionState))
 };
 
   const { array, sum, solution } = solutionState;
